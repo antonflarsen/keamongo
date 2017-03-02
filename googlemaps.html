@@ -17,18 +17,33 @@
     <script>
 	    //Vis location -
       function initMap() {
-        var myLatLng = {lat: 55.695, lng: 12.547};
+        var myLatLng1 = {lat: 55.695, lng: 12.547};
+	   var myLatLng2 = {lat: 55.696, lng: 12.545};
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
-          center: myLatLng
+          center: myLatLng1,
+
         });
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
+        var marker1 = new google.maps.Marker({
+          position: myLatLng1,
           map: map,
+		icon: 'myMarker.png',
           title: 'Nørre Bodega'
+
         });
+		  var marker2 = new google.maps.Marker({
+          position: myLatLng2,
+          map: map,
+          title: 'Limar'
+        });
+
+		 marker1.addListener("click", clickPaaIkon);
+
+		 function clickPaaIkon() {
+			 console.log("er blevet klikket");
+		 }
       }
     </script>
 
