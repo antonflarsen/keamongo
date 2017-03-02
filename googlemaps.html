@@ -13,6 +13,19 @@
     </style>
   </head>
   <body>
+
+
+   <template class="infoboks">
+   <div class=tekstOmNorre>
+   <span class=dataset>
+   	<h2>HEJ MED JER</h2>
+   	<h3>Fuk Kommunen</h3>
+   	<p>Her får du en bajer</p>
+   	</span>
+   	</div>
+   	</template>
+
+
     <div id="map"></div>
     <script>
 	    //Vis location -
@@ -30,9 +43,8 @@
 
         });
 
-		 var infowindow = new google.maps.InfoWindow({
-          content: "Find mig på Nørre Bodega"
-        });
+
+
 
         var marker1 = new google.maps.Marker({
           position: myLatLng1,
@@ -49,15 +61,29 @@
 		 //Event listener på markers skal skrives som addListener, altså minus "event"
 		 marker1.addListener("click", clickPaaIkon);
 
+		 //INFOWINDOW Variabel!
+		 var infowindow = new google.maps.InfoWindow({
+
+        });
+
+
+
 		 //Zoom, center og window funktion funktion
 		 function clickPaaIkon() {
 			 console.log("er blevet klikket");
 			 map.setCenter(myLatLng1);
 			 map.setZoom(18);
+			infowindow.setContent(klon);
+
 			 infowindow.open(map, marker1);
 		 }
 
+		 //Klon template
+		 var klon = document.querySelector(".infoboks").content.cloneNode(true);
 
+		 //Sæt data ind i klon - "hej muller
+		 klon.querySelector(".tekstOmNorre").textContent = dataset;
+		 //
 
 
 	 }
@@ -85,5 +111,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJldEKzoCD90HAqHWjKuztZIUa9Ns20GA&callback=initMap">
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
   </body>
 </html>
