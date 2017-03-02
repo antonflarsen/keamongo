@@ -21,7 +21,7 @@
 	   var myLatLng2 = {lat: 55.696, lng: 12.545};
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
+          zoom: 10,
           center: myLatLng1,
 
         });
@@ -38,11 +38,13 @@
           map: map,
           title: 'Limar'
         });
-
+		 //Event listener på markers skal skrives som addListener, altså minus "event"
 		 marker1.addListener("click", clickPaaIkon);
-
+		 //Zoom og center funktion
 		 function clickPaaIkon() {
 			 console.log("er blevet klikket");
+			 map.setCenter(myLatLng1);
+			 map.setZoom(15);
 		 }
       }
     </script>
