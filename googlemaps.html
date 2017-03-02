@@ -17,8 +17,12 @@
     <script>
 	    //Vis location -
       function initMap() {
-        var myLatLng1 = {lat: 55.695, lng: 12.547};
-	   var myLatLng2 = {lat: 55.696, lng: 12.545};
+		var myLatLng1 = {lat: 55.695095, lng: 12.547976};
+	   	var myLatLng2 = {lat: 55.696, lng: 12.545};
+
+		 //55.695095, 12.547976
+		 //Variabel for at få infowindow frem -> funktion er under marker.
+
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
@@ -26,10 +30,14 @@
 
         });
 
+		 var infowindow = new google.maps.InfoWindow({
+          content: "Find mig på Nørre Bodega"
+        });
+
         var marker1 = new google.maps.Marker({
           position: myLatLng1,
           map: map,
-		icon: 'myMarker.png',
+		icon: 'marker.svg',
           title: 'Nørre Bodega'
 
         });
@@ -40,13 +48,20 @@
         });
 		 //Event listener på markers skal skrives som addListener, altså minus "event"
 		 marker1.addListener("click", clickPaaIkon);
-		 //Zoom og center funktion
+
+		 //Zoom, center og window funktion funktion
 		 function clickPaaIkon() {
 			 console.log("er blevet klikket");
 			 map.setCenter(myLatLng1);
-			 map.setZoom(15);
+			 map.setZoom(18);
+			 infowindow.open(map, marker1);
 		 }
-      }
+
+
+
+
+	 }
+
     </script>
 
 <!-- SIMPEL GOOGLE MAP   -->
